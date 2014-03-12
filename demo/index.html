@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Angular canvas extensions example
+    </title>
+    <!-- styles -->
+    
+    <!-- third party libs -->
+    <script src="bower_components/angular-canvas-ext/exif.min.js"></script>
+    <script src="bower_components/angular-canvas-ext/megapix-image.min.js"></script>
+    <style>
+      body {
+        text-align: center;
+      }
+
+      table {
+        margin: auto;
+      }
+
+      table canvas {
+        background-color: #DDDDDD;
+      }
+
+      table .toolbar {
+        text-align: center;
+      }
+
+      table td {
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>Angular Canvas Extensions</h1>
+    <a href="https://github.com/petalvlad/angular-canvas-ext"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    
+    <div ng-controller="MainController">
+      <table>
+        <tr>
+          <td>
+            <h3>Source</h3>
+            <input type="file" value="open image" ap-file-src="leftCanvas.src">
+          </td>
+          <td>
+            <h3>Crop</h3>
+            
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <canvas width="400" height="450" ap-canvas src="leftCanvas.src" image="leftCanvas.image" zoomable="true" frame="leftCanvas.frame" scale="leftCanvas.scale" offset="leftCanvas.offset"></canvas>
+          </td>
+          <td>
+            <canvas width="400" height="450" ap-canvas src="rightCanvas.src" image="rightCanvas.image"></canvas>
+          </td>
+        </tr>
+        <tr>
+          <td class="toolbar">
+            <div ng-show="leftCanvas.src">
+              <input type="button" value="zoom in (+)" ng-click="zoomIn()">
+              <input type="button" value="zoom out (-)" ng-click="zoomOut()">
+              <input type="button" value="crop ->" ng-click="crop()">
+            </div>                     
+          </td>
+          <td class="toolbar">
+            <a href="#" ng-show="rightCanvas.src" ng-click="download($event)">download</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    
+    <!-- angular -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <!-- canvas ext module -->
+    <script src="bower_components/angular-canvas-ext/angular-canvas-ext.min.js"></script>
+    
+    <script src="app/app.js"></script>
+    <script src="app/controllers/main_controller.js"></script>
+  </body>
+</html>
