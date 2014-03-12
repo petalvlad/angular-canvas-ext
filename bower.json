@@ -1,0 +1,18 @@
+{
+  "name": "Angular canvas ext demo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/petalvlad/angular-canvas-ext",
+  "authors": [
+    "Alex Petropavlovsky <petalvlad@gmail.com>"
+  ],
+  "description": "Angular canvas ext demo",
+  "keywords": [
+    "angular-canvas-ext",
+    "demo"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular-canvas-ext": "~0.0.1"
+  }
+}

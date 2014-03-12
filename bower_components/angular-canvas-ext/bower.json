@@ -1,0 +1,30 @@
+{
+  "name": "angular-canvas-ext",
+  "version": "0.0.1",
+  "homepage": "https://github.com/petalvlad/angular-canvas-ext",
+  "authors": [
+    "Alex Petropavlovsky <petalvlad@gmail.com>"
+  ],
+  "description": "An Angular module that allows to open images in canvas, zoom, pan, crop, resize and download image",
+  "main": "angular-canvas-ext.js",
+  "keywords": [
+    "angularjs",
+    "canvas",
+    "crop",
+    "zoom",
+    "module"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "demo",
+    "src"
+  ],
+  "dependencies": {
+    "angular": "~1.2.14"    
+  }
+}
