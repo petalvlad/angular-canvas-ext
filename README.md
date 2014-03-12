@@ -16,7 +16,8 @@ bower install angular-canvas-ext
 
 Include [third party libs](https://github.com/petalvlad/angular-canvas-ext#dependencies)
 ```html
-<script src="bower_components/angular-canvas-ext/thirdparty.min.js"></script>
+<script src="bower_components/angular-canvas-ext/exif.min.js"></script>
+<script src="bower_components/angular-canvas-ext/megapix-image.min.js"></script>
 ```
 
 Include the module
