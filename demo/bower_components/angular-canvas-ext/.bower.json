@@ -22,11 +22,19 @@
     "test",
     "tests",
     "demo",
-    "src",
-    "Gruntfile.js",
-    "package.json"
+    "src"
   ],
   "dependencies": {
-    "angular": "~1.2.14"    
-  }
+    "angular": "~1.2.14"
+  },
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "5f4c885511aa98079af0bf58fb8c15e5a16eaa9f"
+  },
+  "_source": "git://github.com/petalvlad/angular-canvas-ext.git",
+  "_target": "~0.0.1",
+  "_originalSource": "angular-canvas-ext",
+  "_direct": true
 }
