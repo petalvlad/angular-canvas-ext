@@ -22,7 +22,9 @@
     "test",
     "tests",
     "demo",
-    "src"
+    "src",
+    "Gruntfile.js",
+    "package.json"
   ],
   "dependencies": {
     "angular": "~1.2.14"    
