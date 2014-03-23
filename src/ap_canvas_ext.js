@@ -7,7 +7,7 @@
  * 
  * Copyright (c) 2014 Alex Petropavlovsky <petalvlad@gmail.com>
  * Released under the MIT license
- */
+ */ 
 var canvasExtModule = angular.module('ap.canvas.ext', []);
 
 

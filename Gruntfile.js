@@ -3,6 +3,23 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    
+    watch: {
+      src: {
+        files: ['src/**/*.js'],
+        tasks: ['default'],
+      },
+      tests: {
+        files: ['tests/**/*.js'],
+        tasks: ['karma'],
+      }
+      
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
     clean: {
       dist: {
         src: ["angular-canvas-ext.*", 'exif.*', 'megapix-image.*']
@@ -71,7 +88,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['clean:dist', 'ngmin', 'concat', 'clean:temp', 'uglify']);
+  grunt.registerTask('build', ['clean:dist', 'ngmin', 'concat', 'clean:temp', 'uglify']);
+  grunt.registerTask('test', ['karma']);
+  grunt.registerTask('default', ['build', 'test']);
 
 };
