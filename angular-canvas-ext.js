@@ -364,16 +364,8 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
     // draw image in original size
     ctx.drawImage(image, 0, 0, image.width, image.height);
     // return frame of cropped image
-    return {
-      size: {
-        width: ctx.canvas.width / scale,
-        height: ctx.canvas.height / scale
-      },
-      origin: {
-        x: imageHalfWidth - canvasHalfWidth / scale - offset.x,
-        y: imageHalfHeight - canvasHalfHeight / scale - offset.y
-      }
-    };
+    var x = imageHalfWidth - canvasHalfWidth / scale - offset.x, y = imageHalfHeight - canvasHalfHeight / scale - offset.y, width = ctx.canvas.width / scale, height = ctx.canvas.height / scale;
+    return makeFrame(x, y, width, height);
   }
   function snapImage(image, size, scale, offset) {
     var ctx = createCanvasContext(size.width, size.height);
