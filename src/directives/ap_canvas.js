@@ -15,15 +15,11 @@ canvasExtModule.directive('apCanvas', function(apImageHelper) {
           ctx = canvas.getContext('2d'),
           previousMousePosition = null,
           isMoving = false,
-          defaultScale = 1.0,
+          defaultScale = 0.0,
           isUpdateOffset = false,
           isUpdateScale = false,
           lastZoomDist = null;
 
-      if (!$scope.scale) {
-        $scope.scale = defaultScale;
-      }
-      
       if (!$scope.offset) {
         $scope.offset = {
           x: 0.0,
@@ -57,11 +53,13 @@ canvasExtModule.directive('apCanvas', function(apImageHelper) {
 
       $scope.$watch(function() {
         return $scope.image;
-      }, function(newImage) {
+      }, function(newImage, oldImage) {
         console.log('new image ' + newImage);
         canvas.width = canvas.width;
-        if (newImage) {         
-          updateScale();
+        if (newImage) {
+          if (oldImage || !$scope.scale) {
+            updateScale();  
+          }
           drawImage();
         }
       });
@@ -225,7 +223,7 @@ canvasExtModule.directive('apCanvas', function(apImageHelper) {
         $scope.$watch(function() {
           return $scope.scale;
         }, function(newScale, oldScale) {
-          if (newScale < defaultScale) {
+          if (newScale && newScale < defaultScale) {
             setScale(defaultScale);            
           }
           drawImage();  
