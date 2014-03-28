@@ -298,7 +298,7 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
     return dst;
   }
   function makeFrame(x, y, width, height) {
-    return new Frame(x, y, width, height);
+    return new apFrame(x, y, width, height);
   }
   function cropImage(image, frame, maxSize, type, quality) {
     if (!apTypeHelper.isOneOf(image, [
