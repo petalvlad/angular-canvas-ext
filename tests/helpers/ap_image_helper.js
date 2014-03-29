@@ -74,7 +74,7 @@ describe('Image helper', function() {
         validFilename = 'filename.png';
     function mouseEventMock() {
       return {
-        target: {
+        currentTarget: {
           href: '#',
           download: ''
         },
@@ -103,10 +103,10 @@ describe('Image helper', function() {
         expect(event.defaultPrevented).toBe(expDefaultPrevented);  
       }      
       if (expFilename) {
-        expect(event.target.download).toBe(expFilename);  
+        expect(event.currentTarget.download).toBe(expFilename);  
       }
       if (expDataURI) {
-        expect(event.target.href).toBe(expDataURI);  
+        expect(event.currentTarget.href).toBe(expDataURI);  
       }
       
       if (browser) {

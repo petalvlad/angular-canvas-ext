@@ -206,8 +206,8 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
 
     var type = mimetypeOfDataURI(dataURI);
     dataURI = dataURI.replace(type, "image/octet-stream"); 
-    event.target.href = dataURI;
-    event.target.download = filename;
+    event.currentTarget.href = dataURI;
+    event.currentTarget.download = filename;
     return true;
   }
 
