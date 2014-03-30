@@ -37,7 +37,8 @@ canvasExtModule.factory('apBrowserHelper', function () {
 
   return {
     browser: browser,
-    platform: platform
+    platform: platform,
+    retina: window.devicePixelRatio >= 1.5
   };
  
 });

@@ -40,7 +40,8 @@ canvasExtModule.factory('apBrowserHelper', function () {
   }
   return {
     browser: browser,
-    platform: platform
+    platform: platform,
+    retina: window.devicePixelRatio >= 1.5
   };
 });canvasExtModule.factory('apTypeHelper', function () {
   function objectType(obj) {
@@ -402,7 +403,8 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
     sameImages: sameImages,
     makeFrame: makeFrame,
     imageToImageData: imageToImageData,
-    imageToCanvas: imageToCanvas
+    imageToCanvas: imageToCanvas,
+    snapImage: snapImage
   };
 });
 canvasExtModule.directive('apCanvas', function (apImageHelper) {

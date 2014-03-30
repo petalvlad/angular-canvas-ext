@@ -449,6 +449,7 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
     sameImages: sameImages,
     makeFrame: makeFrame,
     imageToImageData: imageToImageData,
-    imageToCanvas: imageToCanvas
+    imageToCanvas: imageToCanvas,
+    snapImage: snapImage
   }
 });
