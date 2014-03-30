@@ -138,15 +138,10 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
     return img1.width === img2.width && img1.height === img2.height;
   }
   function imagesDifference(img1, img2, tolerance, strict) {
-    if (!apTypeHelper.isOneOf(img1, [
-        'HTMLImageElement',
-        'ImageData'
-      ]) || !apTypeHelper.isOneOf(img2, [
-        'HTMLImageElement',
-        'ImageData'
-      ])) {
-      return undefined;
-    }
+    // if (!apTypeHelper.isOneOf(img1, ['HTMLImageElement', 'ImageData']) || 
+    //     !apTypeHelper.isOneOf(img2, ['HTMLImageElement', 'ImageData'])) {
+    //   return undefined;  
+    // }
     var img1Data = img1 instanceof ImageData ? img1.data : imageToImageData(img1).data, img2Data = img2 instanceof ImageData ? img2.data : imageToImageData(img2).data;
     tolerance = apTypeHelper.isNumber(tolerance) || 255 * 0.05;
     var difference = 0;
@@ -258,7 +253,11 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
       image.onload = function () {
         if (platform.ios) {
           getImageOrientation(image, function (orientation) {
-            var fixOptions = { orientation: orientation };
+            var fixOptions = {
+                orientation: orientation,
+                maxWidth: 500,
+                maxHeight: 500
+              };
             getCanvasWithFixedImage(image, fixOptions, function (target) {
               callback(canvasToDataURI(target, type, quality));
             });
@@ -302,13 +301,11 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
     return new apFrame(x, y, width, height);
   }
   function cropImage(image, frame, maxSize, type, quality) {
-    if (!apTypeHelper.isOneOf(image, [
-        'HTMLImageElement',
-        'ImageData',
-        'HTMLCanvasElement'
-      ]) || !frame || !frame.isValid()) {
-      return null;
-    }
+    // if (!apTypeHelper.isOneOf(image, ['HTMLImageElement', 'ImageData', 'HTMLCanvasElement']) ||
+    //     !frame || 
+    //     !frame.isValid()) {
+    //   return null;
+    // }
     var ctx = createCanvasContext(frame.size.width, frame.size.height);
     if (image instanceof ImageData) {
       var srcCtx = createCanvasContext(image.width, image.height);
