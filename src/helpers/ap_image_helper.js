@@ -320,6 +320,9 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
   }
 
   function cropImage(image, frame, maxSize, type, quality) {
+    if (!image || !frame) {
+      return null;
+    }
     // if (!apTypeHelper.isOneOf(image, ['HTMLImageElement', 'ImageData', 'HTMLCanvasElement']) ||
     //     !frame || 
     //     !frame.isValid()) {

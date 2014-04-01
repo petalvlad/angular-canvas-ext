@@ -57,6 +57,7 @@ canvasExtModule.directive('apCanvas', function(apImageHelper) {
         console.log('new image ' + newImage);
         canvas.width = canvas.width;
         if (newImage) {
+          updateDefaultScale();
           if (oldImage || !$scope.scale) {
             updateScale();  
           }
@@ -70,21 +71,18 @@ canvasExtModule.directive('apCanvas', function(apImageHelper) {
         isUpdateScale = false;
       }
 
-      function updateScale() {
-        
-        var image = $scope.image,
-            widthScale = canvas.width / image.width,
-            heightScale = canvas.height / image.height;
+      function updateDefaultScale() {
+        var image = $scope.image, widthScale = canvas.width / image.width, heightScale = canvas.height / image.height;
         if ($scope.mode === 'fill') {
           defaultScale = Math.max(widthScale, heightScale);
-        }
-        else if ($scope.mode === 'fit') {
+        } else if ($scope.mode === 'fit') {
           defaultScale = Math.min(widthScale, heightScale);
+        } else {
+          defaultScale = 1;
         }
-        else {
-          defaultScale = 1.0;
-        }
+      }
 
+      function updateScale() {
         setScale(defaultScale);
       }
 

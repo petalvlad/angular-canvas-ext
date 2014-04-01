@@ -301,6 +301,9 @@ canvasExtModule.factory('apImageHelper', function ($rootScope, $q, apBrowserHelp
     return new apFrame(x, y, width, height);
   }
   function cropImage(image, frame, maxSize, type, quality) {
+    if (!image || !frame) {
+      return null;
+    }
     // if (!apTypeHelper.isOneOf(image, ['HTMLImageElement', 'ImageData', 'HTMLCanvasElement']) ||
     //     !frame || 
     //     !frame.isValid()) {
@@ -451,6 +454,7 @@ canvasExtModule.directive('apCanvas', function (apImageHelper) {
         console.log('new image ' + newImage);
         canvas.width = canvas.width;
         if (newImage) {
+          updateDefaultScale();
           if (oldImage || !$scope.scale) {
             updateScale();
           }
@@ -462,7 +466,7 @@ canvasExtModule.directive('apCanvas', function (apImageHelper) {
         $scope.scale = scale;
         isUpdateScale = false;
       }
-      function updateScale() {
+      function updateDefaultScale() {
         var image = $scope.image, widthScale = canvas.width / image.width, heightScale = canvas.height / image.height;
         if ($scope.mode === 'fill') {
           defaultScale = Math.max(widthScale, heightScale);
@@ -471,6 +475,8 @@ canvasExtModule.directive('apCanvas', function (apImageHelper) {
         } else {
           defaultScale = 1;
         }
+      }
+      function updateScale() {
         setScale(defaultScale);
       }
       function drawImage() {
